@@ -1,7 +1,13 @@
+"use client";
+import { AppContext } from "@/AppContext";
+import { useContext } from "react";
+
 export default function PageTechSkills() {
+	const { techSkills } = useContext(AppContext);
+
 	return (
 		<>
-		<p>This is the tech skills page.</p>
+			<p>There are {techSkills.length} tech skills.</p>
 		</>
 	)
 }
