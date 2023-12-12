@@ -1,4 +1,4 @@
-export default function Home() {
+export default function PageWelcome() {
 	return (
 		<main>
 			<h1 className="text-3xl mb-4">Tech Site</h1>
