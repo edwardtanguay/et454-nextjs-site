@@ -1,11 +1,12 @@
 "use client";
 import { createContext, useEffect, useState } from "react";
-import { ITechSkill } from "./interfaces";
+import { ITechBook, ITechSkill } from "./interfaces";
 import axios from "axios";
 
 interface IAppContext {
 	welcomeMessage: string;
 	techSkills: ITechSkill[];
+	techBooks: ITechBook[];
 }
 
 interface IAppProvider {
@@ -14,12 +15,14 @@ interface IAppProvider {
 
 const techSkillsUrl =
 	"https://edwardtanguay.vercel.app/share/skills_with_id.json";
+const techBooksUrl = 'https://edwardtanguay.vercel.app/share/techBooks.json';
 const welcomeMessage = "Welcome to this tech site.";
 
 export const AppContext = createContext<IAppContext>({} as IAppContext);
 
 export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 	const [techSkills, setTechSkills] = useState<ITechSkill[]>([]);
+	const [techBooks, setTechBooks] = useState<ITechBook[]>([]);
 
 	useEffect(() => {
 		(async () => {
@@ -29,11 +32,20 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 		})();
 	}, []);
 
+	useEffect(() => {
+		(async () => {
+			const response = await axios.get(techBooksUrl);
+			const _techBooks = response.data;
+			setTechBooks(_techBooks);
+		})();
+	}, []);
+
 	return (
 		<AppContext.Provider
 			value={{
 				welcomeMessage,
 				techSkills,
+				techBooks
 			}}
 		>
 			{children}

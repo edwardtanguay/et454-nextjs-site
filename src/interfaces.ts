@@ -5,3 +5,10 @@ export interface ITechSkill {
 	url: string;
 	description: string;
 }
+
+export interface ITechBook {
+	id: number;
+	idCode: string;
+	title: string;
+	description: string;
+}
