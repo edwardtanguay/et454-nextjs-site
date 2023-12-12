@@ -8,6 +8,13 @@ export default function PageTechSkills() {
 	return (
 		<>
 			<p>There are {techSkills.length} tech skills.</p>
+			<ul className="list-disc ml-6 mt-4">
+				{techSkills.map(techSkill => {
+					return (
+						<li key={techSkill.id}>{techSkill.name}</li>
+					)
+				})}
+			</ul>
 		</>
 	)
 }
