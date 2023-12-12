@@ -3,7 +3,7 @@ import Link from "next/link"
 export const Nav = () => {
 	return (
 		<nav>
-			<ul>
+			<ul className="flex gap-4 bg-slate-700 text-white p-2 font-semibold rounded mb-4">
 				<li>
 					<Link href="/">Welcome</Link>
 				</li>
